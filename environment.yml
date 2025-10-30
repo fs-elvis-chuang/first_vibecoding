@@ -1,0 +1,35 @@
+name: $MY_PYTHON_VIRTURL_ENV_NAME  # 1. 環境名稱，該名稱必須與install.bat、uninstall.bat相同
+
+channels:
+  - conda-forge        # 2. 套件來源頻道
+  - defaults
+#-------------------------------------------------------------------------------
+# 📒套件安裝說明：
+# 1. 搜尋安裝套件相關資訊： 
+#   a.【 https://conda-forge.org/packages/ 】
+#   b.【 conda repoquery search -c conda-forge TA-Lib 】
+#   該搜尋結果可看出有哪些版本與支援python的版本。
+#    -c 通道選擇 conda-froge、default
+# 2. 如果conda無法搜尋到就要到PyPi官網搜尋〔https://pypi.org/〕
+#
+dependencies:
+  # - python=3.10.8      # 3. 核心套件 (例如：Python 版本)，指定版本使用 = 且不要有空白
+  # 因為Python執行效率改善且Shioaji也支援3.11所以置換成該版本。
+  # 【https://www.vnpy.com/forum/topic/34035-veighnafa-bu-v4-1-0-zheng-ti-wan-cheng-mo-kuai-yi-zhi-gong-zuo】
+  - python=3.11.13       
+  - pip
+  # - TA-Lib>=0.6.4
+  - pip:               # 4. Pip 套件，指定版本使用 == 且不要有空白
+    - python-dotenv>=1.1.1    # for 環境變數
+    - pydantic==2.11.5        # shioaji 1.2.7 要求的但是FastAPI也需求該套件--------    
+    # - -r file:requirements.txt
+    # - requests
+    # - beautifulsoup4
+
+#-------------------------------------------------------------------------------
+#
+# 設置環境變數
+#
+# variables:
+#   MY_VAR: something
+#   OTHER_VAR: ohhhhya
